@@ -84,7 +84,7 @@ public class UserController {
 
 		try {
 			
-			//updated
+			//updated to
 			
 			String name = principal.getName(); 
 			User user = this.userRepository.getUserByUserName(name);
