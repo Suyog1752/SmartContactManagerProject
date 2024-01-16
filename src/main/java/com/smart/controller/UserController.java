@@ -84,10 +84,7 @@ public class UserController {
 
 		try {
 			
-//			if (result.hasErrors()) {
-//		        model.addAttribute("contact", contact);
-//		        return "normal/add_contact_form";
-//		    }
+			//updated
 			
 			String name = principal.getName(); 
 			User user = this.userRepository.getUserByUserName(name);
