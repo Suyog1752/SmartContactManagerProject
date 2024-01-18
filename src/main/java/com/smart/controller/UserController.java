@@ -1,6 +1,7 @@
 package com.smart.controller;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -191,5 +192,48 @@ public class UserController {
     	return "normal/contact_detail";
     }
 
+    //delete contact handler
+    @GetMapping("/delete/{cid}/{page}")
+    public String deleteContact(
+            @PathVariable("cid") Integer cid,
+            @PathVariable("page") Integer page,
+            Model model,
+            Principal principal,
+            HttpSession session
+    ) {
+        Optional<Contact> contactOptional = this.contactRepository.findById(cid);
+        Contact contact = contactOptional.orElse(null);
+
+        // Check if the contact exists
+        if (contact != null) {
+            String userName = principal.getName();
+            User user = this.userRepository.getUserByUserName(userName);
+
+            // Check if the logged-in user is the owner of the contact
+            if (contact.getUser().getId() == user.getId()) {
+                // Delete the image file
+                try {
+                    if (contact.getImage() != null && !contact.getImage().isEmpty()) {
+                        File deleteFile = new ClassPathResource("static/IMG").getFile();
+                        Path path = Paths.get(deleteFile.getAbsolutePath() + File.separator + contact.getImage());
+                        Files.deleteIfExists(path);
+                        System.out.println("Image file deleted: " + path.toString());
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    // Handle exception as needed
+                }
+
+                // Delete the contact
+                this.contactRepository.delete(contact);
+                session.setAttribute("message", new com.smart.helper.Message("Contact deleted successfully", "success"));
+            }
+        }
+
+        return "redirect:/user/show-contact/" + page;
+    }
+
+    
+    
 }
 

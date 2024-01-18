@@ -37,7 +37,7 @@
 							</td>
 							<td th:text="${c.phone}">Phone</td>
 							<td>
-								<button class="btn btn-danger">Delete</button>
+								<a th:href="@{'/user/delete/'+${c.cid}+'/'+${page}}" class="btn btn-danger">Delete</a>
 								<button class="btn btn-primary">Update</button>
 					
 							</td>
