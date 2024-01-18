@@ -19,8 +19,9 @@
 							<script th:inline="javascript">
 								setTimeout(function () {
 									document.querySelector('[role="alert"]').remove();
-								}, 5000); // Adjust the timeout value (in milliseconds) as needed
+								}, 3000); // Adjust the timeout value (in milliseconds) as needed
 							</script>
+							<th:block th:text="${@sessionHelper.removeMessageFromSession()}"></th:block>
 						</div>
 
 

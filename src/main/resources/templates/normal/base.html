@@ -52,7 +52,7 @@
 		
 		<span onclick="toggleSidebar()" class="crossBtn">&times;</span>
 		<a href="#" th:href="@{/user/index}" class="item"><i class="fa-solid fa-house"></i>  Home</a>
-		<a href="#" class="item"><i class="fa-solid fa-id-card-clip"></i> View Contact</a>
+		<a href="#" th:href="@{/user/show-contact/0}"  class="item"><i class="fa-solid fa-id-card-clip"></i> View Contact</a>
 		<a href="#" th:href="@{/user/add-contact}" class="item"><i class="fa-solid fa-pencil"></i> Add Contact</a>
 		<a href="#" class="item"><i class="fa-solid fa-circle-user"></i> Your Profile</a>
 		<a href="#" class="item"><i class="fa-solid fa-gear"></i> Settings</a>
@@ -64,11 +64,21 @@
 	<!--Content Area-->
 	<div class="content mt-5">
 		<i onclick="toggleSidebar()" class="fas fa-bars m-3"></i>
-		<div class="alert alert-danger" role="alert">
-			This is a danger alert—check it out!
+	<!--//message box-->
+	<div th:if="${session.message}" class="container">
+		<div th:classappend="${'alert-'+session.message.type}" class="alert  text-center" role="alert">
+			<span th:text="${session.message.content}"></span>
+			<script th:inline="javascript">
+				setTimeout(function () {
+					document.querySelector('[role="alert"]').remove();
+				}, 3000); // Adjust the timeout value (in milliseconds) as needed
+			</script>
 		</div>
-		<div th:replace="${content}"></div>
+		<th:block th:text="${@sessionHelper.removeMessageFromSession()}"></th:block>
+	</div>
 		
+		<div th:replace="${content}"></div>
+	
 	</div>
 	<!--End content-->
 
