@@ -141,3 +141,9 @@ cursor: pointer;
     margin: 20px 0;
     display: inline-block;}
   .contant_box_404{ margin-top:-50px;}
+  
+  td a, td form {
+    display: inline-block;
+    margin-right: 10px; /* Adjust the margin as needed */
+    margin-bottom: 1%}
+
