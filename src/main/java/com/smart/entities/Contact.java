@@ -2,6 +2,8 @@ package com.smart.entities;
 
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -48,6 +50,7 @@ public class Contact {
 	private String description;
 	
 	@ManyToOne
+	@JsonIgnore
 	private User user;
 	public User getUser() {
 		return user;

@@ -1,7 +1,7 @@
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" 
    th:replace="normal/base::layout(~{::section})">
-
 <head>
 	<meta charset="ISO-8859-1">
 	<title>this a home about</title>
@@ -13,11 +13,13 @@
 			<div class="card text-center">
 				<div class="card-body my-5">
 					<div class="container text-center">
-						<img style="height: 200px; width: 600px;" class="" th:src="@{'/img/contact_image.png'}" alt="profile Photo">
+						<img style="height: 200px; width: 600px;" class="" th:src="@{'/img/contact_image.png'}"
+							alt="profile Photo">
 					</div>
 					<h1 class="text-center mt-3 text-seccondary font-italic font-weight-light">
 						Start Adding your contacts on cloud...</h1>
-					<a th:href="@{/user/add-contact}" class="btn btn-primary btn-block text-uppercase mt-3">Add New Contact</a>
+					<a th:href="@{/user/add-contact}" class="btn btn-primary btn-block text-uppercase mt-3">Add New
+						Contact</a>
 				</div>
 			</div>
 		</div>
