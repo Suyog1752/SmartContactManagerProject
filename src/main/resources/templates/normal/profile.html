@@ -15,6 +15,9 @@
 		<img style="height: 200px; width: 200px;" class="my_profile_picture mt-2"
         th:src="@{'/img/'+${user.imageUrl}}" alt="profile Photo">
 		<h1 class="text-center" th:text="${user.name}"></h1>
+		
+		<!--Creating a table responsive using table-reponsive class-->
+				<div class="table-responsive">
       <table class="table">
         <thead>
           <tr>
@@ -41,13 +44,19 @@
           </tr>
         </tbody>
       </table>
+	 </div>
     </div>
   </div>
 </div>
 
   
 </div>
-
+ <script>
+		 $(document).ready(()=>{
+			$(".item").removeClass("active")
+			$("#profile-link").addClass("active")
+		 });
+	  </script>
 	</section>
 </body>
 

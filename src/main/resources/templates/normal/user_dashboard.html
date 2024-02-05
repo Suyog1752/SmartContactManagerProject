@@ -9,12 +9,14 @@
 
 <body>
 	<section>
+		<!--Creating a table responsive using table-reponsive class-->
+				<div class="table-responsive">
 		<div class="container">
 			<div class="card text-center">
 				<div class="card-body my-5">
 					<div class="container text-center">
-						<img style="height: 200px; width: 600px;" class="" th:src="@{'/img/contact_image.png'}"
-							alt="profile Photo">
+						<img  style="height: 200px; width: 600px;" class="img-fluid" th:src="@{'/img/contact_image.png'}"
+							alt="profile Photo" >
 					</div>
 					<h1 class="text-center mt-3 text-seccondary font-italic font-weight-light">
 						Start Adding your contacts on cloud...</h1>
@@ -23,6 +25,14 @@
 				</div>
 			</div>
 		</div>
+	  </div>
+	  <script>
+		 $(document).ready(()=>{
+			$(".item").removeClass("active")
+			$("#home-link").addClass("active")
+		 });
+	  </script>
+	  
 	</section>
 </body>
 
