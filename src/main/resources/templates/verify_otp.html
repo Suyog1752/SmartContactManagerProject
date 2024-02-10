@@ -18,7 +18,21 @@
 							<div class="alert alert-success mt-3" role="alert">
 								We have sent OTP to your email !!
 							</div>
-							<form method="post" th:action="@{/send-otp}">
+							
+							<!--//message box-->
+							<div th:if="${session.message}" class="container">
+								<div  class="alert alert-danger my-2 text-center" role="alert">
+									<span th:text="${session.message}"></span>
+									<script th:inline="javascript">
+										setTimeout(function () {
+											document.querySelector('[role="alert"]').remove();
+										}, 3000); // Adjust the timeout value (in milliseconds) as needed
+									</script>
+								</div>
+								<th:block th:text="${@sessionHelper.removeMessageFromSession()}"></th:block>
+							</div>
+							
+							<form method="post" th:action="@{/verify-otp}">
 								<div class="form-group mt-4">
 									<input required type="number" name="otp" id="" placeholder="Enter OTP Here" class="form-control">
 								</div>
