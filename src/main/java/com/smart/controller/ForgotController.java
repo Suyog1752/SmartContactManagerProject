@@ -3,6 +3,7 @@ package com.smart.controller;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,7 @@ import com.smart.service.EmailService;
 
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.constraints.Email;
+import jakarta.websocket.Session;
 
 @Controller
 public class ForgotController {
@@ -22,6 +24,8 @@ public class ForgotController {
 	private EmailService emailService;
 	@Autowired
 	private UserRepository userRepository;
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
 	
 	Random random = new Random(1000);
 	//email id form open handler
@@ -81,7 +85,7 @@ public String verifyOtp(@RequestParam("otp") int otp,HttpSession session) {
 		User user = this.userRepository.getUserByUserName(email);
 		if (user==null) {
 			//send the error message 
-			session.setAttribute("message", "User does not exist with this enail !!"); 
+			session.setAttribute("message", "User does not exist with this email !!"); 
 			return "forgot_email_form"; 
 			
 		}else {
@@ -95,5 +99,18 @@ public String verifyOtp(@RequestParam("otp") int otp,HttpSession session) {
 	return "verify_otp";
 	}
 	
+}
+
+
+//change_password handler
+@PostMapping("/change_password")
+public String changePassword(@RequestParam("new password") String NewPassword,HttpSession session ) {
+	  String email=(String) session.getAttribute("email");
+	  User user = this.userRepository.getUserByUserName(email);
+	  user.setPassword(this.passwordEncoder.encode(NewPassword));
+	  this.userRepository.save(user);
+	  
+	  return "redirect:/signin?change=password changed successfully...";
+	  
 }
 }
