@@ -22,6 +22,11 @@
 						Start Adding your contacts on cloud...</h1>
 					<a th:href="@{/user/add-contact}" class="btn btn-primary btn-block text-uppercase mt-3">Add New
 						Contact</a>
+						<hr>
+						<input id="payment_field" type="text" class="form-control my-2 " placeholder="Enter Amount Here...">
+						<div class="container text-center mt-3">
+							<button onclick="paymentStart()" class="btn btn-success btn-block">Pay</button>
+						</div>
 				</div>
 			</div>
 		</div>
