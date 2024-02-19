@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Bitroot-Frontend-Assigment/static/css/main.2024511b.css",
+    "main.js": "/Bitroot-Frontend-Assigment/static/js/main.b024a6c6.js",
+    "index.html": "/Bitroot-Frontend-Assigment/index.html",
+    "main.2024511b.css.map": "/Bitroot-Frontend-Assigment/static/css/main.2024511b.css.map",
+    "main.b024a6c6.js.map": "/Bitroot-Frontend-Assigment/static/js/main.b024a6c6.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2024511b.css",
+    "static/js/main.b024a6c6.js"
+  ]
+}
